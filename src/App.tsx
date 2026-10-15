@@ -1,121 +1,138 @@
 import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
 import './App.css'
 
+const destinations = [
+  {
+    name: 'The Dolomites',
+    country: 'Italy',
+    detail: 'Alpine air & quiet trails',
+    image:
+      'https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=85',
+    alt: 'Mountain peaks beneath a starry sky',
+  },
+  {
+    name: 'Kyoto, slowly',
+    country: 'Japan',
+    detail: 'Temple mornings & tea',
+    image:
+      'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=900&q=85',
+    alt: 'Traditional wooden street in Kyoto',
+  },
+  {
+    name: 'The wild coast',
+    country: 'Portugal',
+    detail: 'Salt air & long lunches',
+    image:
+      'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=85',
+    alt: 'Waves rolling into a quiet coastline',
+  },
+]
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [isSaved, setIsSaved] = useState(false)
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <main>
+      <header className="site-header">
+        <a className="wordmark" href="#top" aria-label="Elsewhere home">
+          elsewhere<span>.</span>
+        </a>
+        <nav className="main-nav" aria-label="Main navigation">
+          <a href="#places">Places</a>
+          <a href="#notes">Our point of view</a>
+        </nav>
+        <a className="header-link" href="#places">
+          Find your somewhere <span aria-hidden="true">↗</span>
+        </a>
+      </header>
+
+      <section className="feature" id="top" aria-labelledby="feature-title">
+        <img
+          className="feature-image"
+          src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2400&q=90"
+          alt="Sunlight falling across a vast, open mountain landscape"
+        />
+        <div className="feature-shade" />
+        <div className="feature-topline">
+          <span>Independent travel, thoughtfully found</span>
+          <span className="issue-label">Field notes No. 08 / 2026</span>
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
+        <div className="feature-copy">
+          <p className="eyebrow"><span /> For the beautifully unhurried</p>
+          <h1 id="feature-title">Go where<br />you feel <em>more.</em></h1>
+          <p className="feature-description">
+            Thoughtful places for people who would rather feel a place than
+            tick it off.
           </p>
+          <a className="feature-cta" href="#places">
+            Find your next somewhere <span aria-hidden="true">↓</span>
+          </a>
         </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
+        <div className="feature-caption">
+          <span>01 / 03</span>
+          <span>Somewhere in the Dolomites, Italy</span>
+          <span>46° 24' N&nbsp;&nbsp; 11° 51' E</span>
         </div>
       </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+      <section className="places-section" id="places">
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow section-eyebrow"><span /> A little further</p>
+            <h2>Places that stay with you.</h2>
+          </div>
+          <a className="text-link" href="#notes">
+            See our way of travelling <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <div className="destination-grid">
+          {destinations.map((destination, index) => (
+            <a className="destination" href="#notes" key={destination.name}>
+              <div className="destination-image-wrap">
+                <img src={destination.image} alt={destination.alt} />
+                <span className="destination-index">0{index + 1}</span>
+                <span className="destination-arrow" aria-hidden="true">↗</span>
+              </div>
+              <div className="destination-meta">
+                <div>
+                  <h3>{destination.name}</h3>
+                  <p>{destination.detail}</p>
+                </div>
+                <span>{destination.country}</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section className="closing-note" id="notes">
+        <p className="eyebrow"><span /> A note from elsewhere</p>
+        <div className="closing-content">
+          <h2>Less itinerary.<br /><em>More instinct.</em></h2>
+          <div className="closing-side">
+            <p>
+              We collect the small, good things: a locally owned inn, the long
+              way home, a table worth lingering at. Start anywhere.
+            </p>
+            <button
+              className={`save-button${isSaved ? ' is-saved' : ''}`}
+              type="button"
+              aria-pressed={isSaved}
+              onClick={() => setIsSaved(!isSaved)}
+            >
+              <span aria-hidden="true">{isSaved ? '✓' : '+'}</span>
+              {isSaved ? 'Saved for later' : 'Save this thought'}
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <footer className="site-footer">
+        <a className="wordmark" href="#top">elsewhere<span>.</span></a>
+        <span>Take the scenic route.</span>
+        <a href="#top">Back to the beginning ↑</a>
+      </footer>
+    </main>
   )
 }
 
